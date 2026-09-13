@@ -161,12 +161,3 @@ verdict routing, retry bounding, the approval gate covering every outward-facing
 tool, and PII redaction reaching tool results.
 
 ---
-
-## Provenance
-
-Built from the week 4 capstone of Ed Donner's *Master AI Agentic Engineering*
-course, restructured into a standalone application: a `src` layout separating the
-agent, its tools, its prompts and its UI; centralised configuration for every
-budget and boundary; a CLI with an environment doctor; graceful handling of a
-missing search key; and a test suite over the control flow. See
-`ARCHITECTURE.md`.
