@@ -1,0 +1,55 @@
+[project]
+name = "sidekick-agent"
+version = "1.0.0"
+description = "A personal agent that works to a definition of success, behind a production guardrail stack"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain>=1.3.4",
+    "langchain-openai>=1.2.2",
+    "langchain-community>=0.4.2",
+    "langchain-mcp-adapters>=0.2.2",
+    "langgraph>=1.2.4",
+    "langgraph-checkpoint-sqlite>=3.1.0",
+    "openai>=2.34.0",
+    "pydantic>=2.13.3",
+    "python-dotenv>=1.2.2",
+    "requests>=2.33.1",
+    "wikipedia>=1.4.0",
+    "gradio>=6.14.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.6.0",
+]
+
+[project.scripts]
+sidekick = "sidekick.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sidekick"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 110
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+# Defaults plus import sorting. Deliberately not the "select everything" set:
+# this codebase catches broad exceptions and uses naive local timestamps on
+# purpose, and a linter that flags those trains you to ignore it.
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["sidekick"]
