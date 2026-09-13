@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+sandbox/*
+!sandbox/.gitkeep
+.pytest_cache/
+.ruff_cache/
+node_modules/
+
+# Personal notes, not published
+INTERVIEW_PREP.md
